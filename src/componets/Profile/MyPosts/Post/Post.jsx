@@ -3,9 +3,9 @@ import classes from './Post.module.css';
 
 
 
-const Post = () => {
+const Post = (props) => {
     return <div className = {classes.item}>
-                    post1
+        { props.message }      
            </div>
                
 }
