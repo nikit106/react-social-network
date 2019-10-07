@@ -1,20 +1,16 @@
 import React from 'react';
+import classes from './Profile.module.css';
+import MyPosts from './MyPosts/MyPosts';
+
 
 
 const Profile = () => {
-    return <div className = 'content'>
+    return <div className = {classes.content}>
             <div>
                 <img src = "https://www.w3schools.com/howto/img_snow_wide.jpg"></img>
             </div>
             <div>ava + description</div>
-            <div>
-                My posts
-                <div>
-                    news posts
-                </div>
-            </div>
-                <div>1</div>
-                <div>2</div>
+            <MyPosts />
         </div>
 }
     
