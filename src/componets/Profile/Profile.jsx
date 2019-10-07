@@ -5,7 +5,7 @@ import MyPosts from './MyPosts/MyPosts';
 
 
 const Profile = () => {
-    return <div className = {classes.content}>
+    return <div>
             <div>
                 <img src = "https://www.w3schools.com/howto/img_snow_wide.jpg"></img>
             </div>
