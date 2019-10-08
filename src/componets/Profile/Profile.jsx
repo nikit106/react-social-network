@@ -1,17 +1,17 @@
 import React from 'react';
 import classes from './Profile.module.css';
 import MyPosts from './MyPosts/MyPosts';
+import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 
 
 const Profile = () => {
-    return <div>
-            <div>
-                <img src = "https://www.w3schools.com/howto/img_snow_wide.jpg"></img>
-            </div>
-            <div>ava + description</div>
+    return (
+        <div>
+            <ProfileInfo/>
             <MyPosts />
-        </div>
+        </div>    
+    )
 }
     
 export default Profile;

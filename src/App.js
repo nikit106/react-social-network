@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Header from './componets/Header/Header';
 import Navbar from './componets/Navbar/Navbar';
@@ -8,7 +7,9 @@ import Dialogs from './componets/Dialogs/Dialogs';
 import {BrowserRouter, Route} from 'react-router-dom';
 
 
-const App = () => {
+
+
+const App = (props) => {
   return (
       
       <BrowserRouter>
@@ -16,20 +17,13 @@ const App = () => {
         <div className = 'app-wrapper'>
              <Header />
              <Navbar />
-      
-      
             <div class = 'app-wrapper-content'>
               <Route path = "/dialogs" component = {Dialogs}/>
-              <Route path = "/profile" component = {Profile}/>
-              <Route path = "/news" component = {Profile}/>
-              <Route path = "/music" component = {Profile}/>
-              <Route path = "/setting" component = {Profile}/>
+              <Route path = "/profile" component = {Profile}/> 
             </div>
-      
         </div>
-      
       </BrowserRouter>
-  );
+  )
 }
 
 export default App;

@@ -5,17 +5,28 @@ import Post from './Post/Post'
 
 
 const MyPosts = () => {
+    
+    
+let postData = [  
+                    {id: 1,message: 'Hi, how are you',   likeCounts: 0},
+                    {id: 2,message: 'Its my first post', likeCounts: 20}]
+
+
+    
     return <div className = {classes.content}>
-            <div>
+            <div className = {classes.postsBlock}>
+                <h3>My posts</h3>
                 <div>
-                    My posts
-                </div>
-                <div>
-                    news posts
+                    <div>
+                      <textarea></textarea>
+                    </div>
+                    <div>
+                      <button>Add posts</button>
+                    </div>
                 </div>
                 <div className = {classes.posts}>
-                    <Post message = 'Hi, how are you' likeCounts = '0' />
-                    <Post message = 'Its my first post' likeCounts = '20'/>
+                    <Post message = {postData[0].message} likeCounts = {postData[0].likeCounts}/>
+                    <Post message = {postData[1].message} likeCounts = {postData[1].likeCounts}/>
                 </div>
             </div>
     </div>
