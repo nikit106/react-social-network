@@ -1,8 +1,5 @@
-let Tree = () => {
-    console.log('state is changed')
-}
-
-let state = {
+let store = {
+    _state : {
     
     profilePage: {
          posts: [  
@@ -24,27 +21,49 @@ let state = {
                            {id: 6,name: 'Valera'},
                            {id: 7,name: 'Viktor'}] 
 }
+},
+    getState() {
+        return this._state;
+    },
+    _callSubscriber()  {
+        console.log('state is changed');
+    },
+  /*  addPost() {
+         let newPost = {
+             id: 5,
+             message: this._state.profilePage.newPostText,
+             likeCounts: 0
+         };
+         this._state.profilePage.posts.push(newPost);
+         this._state.profilePage.newPostText = '';
+         this._callSubscriber(this._state);
+ }, */
+    /*updateNewPostText(newText) {
+     this._state.profilePage.newPostText = newText;
+     this._callSubscriber(this._state); 
+ },*/
+    subscribe(observer) {
+     this._callSubscriber = observer; // патерн observer Publisher-subscriber
+ },
+    
+    dispatch(action) {
+        if (action.type === 'ADD-POST') {
+           let newPost = {
+             id: 5,
+             message: this._state.profilePage.newPostText,
+             likeCounts: 0
+         };
+            this._state.profilePage.posts.push(newPost);
+            this._state.profilePage.newPostText = '';
+            this._callSubscriber(this._state);          
+        }
+        else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this._state.profilePage.newPostText = action.newText;
+            this._callSubscriber(this._state);
+        }
+}
+        
 }
     
- export const addPost = () => {
-     let newPost = {
-         id: 5,
-         message: state.profilePage.newPostText,
-         likeCounts: 0
-     };
-     state.profilePage.posts.push(newPost);
-     state.profilePage.newPostText = '';
-     Tree(state);
- } 
- 
- export const updateNewPostText = (newText) => {
-     state.profilePage.newPostText = newText;
-     Tree(state);
- } 
- 
- export const subscribe = (observer) => {
-     Tree = observer; // патерн observer Publisher-subscriber
- }
-    
-export default state;
-   
+export default store;
+window.store = store;
