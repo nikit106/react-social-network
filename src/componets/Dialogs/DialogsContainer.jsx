@@ -14,10 +14,10 @@ let mapStateToProps = (state) => { // настраивает свойства к
 }
 let mapDispatchToProps = (dispatch) => { // callback которые мы булем отправялть в нашу  презентационную компоненту
     return {
-        updateNewMessageBody: () => {
+        sendMessage: () => {
             dispatch(sendMessageCreator());
         },
-        sendMessage: (body) => {
+        updateNewMessageBody: (body) => {
             dispatch(updateNewMessageBodyCreator(body));
         }
     }

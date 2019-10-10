@@ -1,26 +1,27 @@
+//++++++++
 import React from 'react';
 import './App.css';
 import Header from './componets/Header/Header';
 import Navbar from './componets/Navbar/Navbar';
 import Profile from './componets/Profile/Profile';
-import Dialogs from './componets/Dialogs/Dialogs';
+import {Route} from 'react-router-dom';
+import UsersContainer from './componets/Users/UsersContainer';
 import DialogsContainer from './componets/Dialogs/DialogsContainer';
-import {BrowserRouter, Route} from 'react-router-dom';
 
-
-
-
-
-const App = (props) => {
+const App = () => {
   return (
         <div className = 'app-wrapper'>
              <Header />
              <Navbar />
             <div className = 'app-wrapper-content'>
               <Route path = "/dialogs" 
-                    render = { () => <DialogsContainer /*store = {props.store}*/ /> }/>
+                    render = { () => <DialogsContainer /> }/>
+    
               <Route path = "/profile" 
-                    render = { () => <Profile /*store = {props.store}*/ /> }/>
+                    render = { () => <Profile /> }/>
+                        
+              <Route path = "/users" 
+                    render = { () => <UsersContainer /> }/>
             </div>
         </div>
   )

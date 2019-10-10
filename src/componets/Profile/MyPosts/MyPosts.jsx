@@ -11,7 +11,6 @@ let newPostElement = React.createRef();
     
 let onAddPost = () => {
     props.addPost();
-    
 }
 
 let onPostChange = () => {
@@ -19,7 +18,7 @@ let onPostChange = () => {
     props.updateNewPostText(text);
 }
     
-    return <div className = {classes.content}>
+    return (
             <div className = {classes.postsBlock}>
                 <h3>My posts</h3>
                 <div>
@@ -29,14 +28,14 @@ let onPostChange = () => {
                                 value = {props.newPostText}/>
                     </div>
                     <div>
-                      <button onClick = { onAddPost }>Add posts</button>
+                      <button onClick = { onAddPost }>Add post</button>
                     </div>
                 </div>
                 <div className = {classes.posts}>
                     {postsElements}
                 </div>
             </div>
-    </div>
+        )
 }
     
 export default MyPosts;
