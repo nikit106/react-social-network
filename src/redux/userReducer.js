@@ -3,13 +3,15 @@ const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USERS';
 const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
 const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
+const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING';
 //используем константы чтобы не использовать строки и не ошибиться
 
 let initialState = {
     users: [],
     pageSize: 100, //кол-во страниц
     totalUsersCount: 0, // всего пользователей
-    currentPage: 1// Текущая страница
+    currentPage: 1, // Текущая страница
+    isFetching: true // loading при загрузке
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -43,6 +45,9 @@ const usersReducer = (state = initialState, action) => {
         case SET_TOTAL_USERS_COUNT: {
              return {...state, totalUsersCount: action.count}   
         }
+        case TOGGLE_IS_FETCHING: {
+                return {...state, isFetching: action.isFetching} 
+        }
         default:
             return state;    
         }
@@ -50,11 +55,12 @@ const usersReducer = (state = initialState, action) => {
     }
 
 // AC - actionCreator
-export const followAC = (userId) => ({type: FOLLOW, userId})
-export const unfollowAC = (userId) => ({type: UNFOLLOW, userId})
-export const setUsersAC = (users) => ({type: SET_USERS, users})
-export const setCurrentPageAC = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage})
-export const setUsersTotalCountAC = (count) => ({type: SET_TOTAL_USERS_COUNT, count})
+export const follow = (userId) => ({type: FOLLOW, userId})
+export const unfollow = (userId) => ({type: UNFOLLOW, userId})
+export const setUsers = (users) => ({type: SET_USERS, users})
+export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage})
+export const setTotalUsersCount = (count) => ({type: SET_TOTAL_USERS_COUNT, count})
+export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
 
 
 export default usersReducer;
